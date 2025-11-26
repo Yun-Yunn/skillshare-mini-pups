@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+<h1>Liste des utilisateurs</h1>
+
+<ul>
+{% for user in users %}
+    <li style="margin-bottom: 20px;">
+        <strong>{{ user.name }}</strong> – {{ user.email }}
+
+        <br><strong>Compétences offertes :</strong>
+        {% if user.skillsOffered|length > 0 %}
+            <ul>
+            {% for so in user.skillsOffered %}
+                <li>{{ so.skill.label }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            Aucune
+        {% endif %}
+
+        <strong>Compétences voulues :</strong>
+        {% if user.userSkillWanteds|length > 0 %}
+            <ul>
+            {% for sw in user.userSkillWanteds %}
+                <li>{{ sw.skill.label }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            Aucune
+        {% endif %}
+
+        <a href="{{ path('app_public_profile', {id: user.id}) }}">
+    Voir profil
+</a>
+
+    </li>
+{% endfor %}
+</ul>
+
+{% endblock %}

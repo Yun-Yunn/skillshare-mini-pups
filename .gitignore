@@ -1,20 +1,16 @@
-
-###> symfony/framework-bundle ###
-/.env.local
-/.env.local.php
-/.env.*.local
-/config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
+# Symfony
 /var/
 /vendor/
-###< symfony/framework-bundle ###
+/.env
+.env.local
+.env.*.local
 
-###> phpunit/phpunit ###
-/phpunit.xml
-/.phpunit.cache/
-###< phpunit/phpunit ###
+# IDE
+.vscode/
+.idea/
 
-###> symfony/asset-mapper ###
-/public/assets/
-/assets/vendor/
-###< symfony/asset-mapper ###
+# Node (si un jour tu ajoutes Webpack/Encore)
+/node_modules/
+
+# Docker
+docker-compose.override.yml

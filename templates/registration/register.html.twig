@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<h1 style="color:red; font-size:60px">TEST REGISTER</h1>
+
+
+<h1 class="mb-4">Créer un compte</h1>
+
+<div class="card shadow p-4">
+
+    {{ form_start(registrationForm) }}
+
+    <div class="mb-3">
+        {{ form_row(registrationForm.name) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_row(registrationForm.email) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe'
+        }) }}
+    </div>
+
+    <div class="form-check mb-3">
+        {{ form_row(registrationForm.agreeTerms) }}
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">
+        S’inscrire
+    </button>
+
+    {{ form_end(registrationForm) }}
+
+</div>
+
+{% endblock %}

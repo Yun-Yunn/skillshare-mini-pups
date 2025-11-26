@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil{% endblock %}
+
+{% block body %}
+<h1>Mon Profil</h1>
+
+<p><strong>Nom :</strong> {{ user.name }}</p>
+<p><strong>Email :</strong> {{ user.email }}</p>
+
+<hr>
+
+{# ===================== #
+   COMPÉTENCES OFFERTES
+   ===================== #}
+
+<h2>Compétences offertes :</h2>
+
+<ul>
+    {% for item in user.skillsOffered %}
+        <li>
+            {{ item.skill.label }}
+            <a href="{{ path('app_profile', { 'delete_offered': 1, 'id': item.id }) }}" style="color:red;">
+                ❌
+            </a>
+        </li>
+    {% else %}
+        <li>Aucune compétence offerte.</li>
+    {% endfor %}
+</ul>
+
+<form method="get">
+    <select name="skill_id">
+        {% for s in skills %}
+            <option value="{{ s.id }}">{{ s.label }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" name="add_offered" value="1">Ajouter compétence offerte</button>
+</form>
+
+<hr>
+
+{# ===================== #
+   COMPÉTENCES VOULUES
+   ===================== #}
+
+<h2>Compétences voulues :</h2>
+
+<ul>
+    {% for item in user.userSkillWanteds %}
+        <li>
+            {{ item.skill.label }}
+            <a href="{{ path('app_profile', { 'delete_wanted': 1, 'id': item.id }) }}" style="color:red;">
+                ❌
+            </a>
+        </li>
+    {% else %}
+        <li>Aucune compétence voulue.</li>
+    {% endfor %}
+</ul>
+
+<form method="get">
+    <select name="skill_id">
+        {% for s in skills %}
+            <option value="{{ s.id }}">{{ s.label }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" name="add_wanted" value="1">Ajouter compétence voulue</button>
+</form>
+
+<hr>
+
+<a href="{{ path('app_logout') }}">Se déconnecter</a>
+
+{% endblock %}

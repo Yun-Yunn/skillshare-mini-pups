@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de {{ user.name }}{% endblock %}
+
+{% block body %}
+<h1>Profil public de {{ user.name }}</h1>
+
+<p><strong>Email :</strong> {{ user.email }}</p>
+
+<hr>
+
+<h2>Compétences offertes :</h2>
+<ul>
+    {% for item in user.skillsOffered %}
+        <li>{{ item.skill.label }}</li>
+    {% else %}
+        <li>Aucune compétence offerte.</li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<h2>Compétences voulues :</h2>
+<ul>
+    {% for item in user.userSkillWanteds %}
+        <li>{{ item.skill.label }}</li>
+    {% else %}
+        <li>Aucune compétence voulue.</li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<a href="{{ path('app_users') }}">⬅ Retour à la liste des utilisateurs</a>
+
+{% endblock %}

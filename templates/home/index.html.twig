@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<h1>Bienvenue sur SkillShare Mini</h1>
+
+{% if app.user %}
+    <p>Bonjour {{ app.user.name }} 👋</p>
+    <a href="{{ path('app_profile') }}">➡ Aller à mon profil</a><br>
+    <a href="{{ path('app_users') }}">➡ Voir les utilisateurs</a>
+{% else %}
+    <a href="{{ path('app_login') }}">Se connecter</a> |
+    <a href="{{ path('app_register') }}">Créer un compte</a>
+{% endif %}
+
+{% endblock %}
