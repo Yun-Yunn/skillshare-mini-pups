@@ -31,3 +31,4 @@ Si nécessaire, exécuter les migrations :
 Aucun utilisateur n'est créé par défaut.  
 Créer un compte directement via l'interface.
 
+Projet réalisé dans le cadre d’un exercice d’apprentissage Symfony et Docker.
